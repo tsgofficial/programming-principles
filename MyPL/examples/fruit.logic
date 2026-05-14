@@ -1,0 +1,7 @@
+jims(usan_uzem).
+jims(toor).
+
+dars(X) :- jims(X).
+
+?- dars(usan_uzem).
+?- dars(toor).
