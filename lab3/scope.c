@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int X = 5; // global
+int X = 5;
 
 void foo()
 {
@@ -10,7 +10,7 @@ void foo()
 
 void bar()
 {
-    int X = 7; // local (shadows global)
+    int X = 7;
     foo();
 }
 

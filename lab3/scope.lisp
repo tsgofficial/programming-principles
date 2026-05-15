@@ -1,26 +1,15 @@
-(let ((x 5))   ;; lexical variable
+(defparameter *x* 5)
 
-(defun foo_static ()
-    (format t "foo sees x = ~a~%" x))
+(defun foo ()
+  (let ((y 10))
+    (format t "~a~%" (+ *x* y))))
 
-(defun bar_static ()
-    (let ((x 10))
-    (foo_static)))
+(defun bar ()
+  (let ((*x* 7))
+    (foo)))
 
-(bar_static))
+(defun main ()
+  (bar)
+  (format t "~a~%" *x*))
 
-;; Expected: 5
-
-
-(defparameter *x* 5)  ;; dynamic variable
-
-(defun foo_dynamic ()
-  (format t "foo sees x = ~a~%" *x*))
-
-(defun bar_dynamic ()
-  (let ((*x* 10))   ;; dynamic binding
-    (foo_dynamic)))
-
-(bar_dynamic)
-
-;; Expected: 10
+(main)
